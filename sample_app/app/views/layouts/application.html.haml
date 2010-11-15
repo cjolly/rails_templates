@@ -11,9 +11,11 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-  %body.bp.two_col
-    #container
-      %header#header
-      %sidebar#sidebar
-      %section#content= yield
-      %footer#footer
+  %body
+    .bp
+      %header
+    .bp
+      %sidebar
+      %section= yield
+    .bp
+      %footer

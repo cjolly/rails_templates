@@ -26,6 +26,8 @@ generate "rspec:install"
 generate "cucumber:install --capybara --rspec"
 
 run "compass init rails --using=blueprint --sass-dir=app/stylesheets --css-dir=public/stylesheets"
+run "rm public/stylesheets/.gitkeep"
+append_file '.gitignore', 'public/stylesheets'
 
 inside("app/views/layouts") do
   run "rm application.html.erb"
