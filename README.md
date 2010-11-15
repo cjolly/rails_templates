@@ -1,0 +1,1 @@
+`rails new sample_app -T -m https://github.com/cjolly/rails3_template/raw/master/go.rb`
