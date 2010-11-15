@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title= @page_title
+    %meta{:charset => 'UTF-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width'}
+    %meta{:name => 'description', :content => @meta_decription}
+    %meta{:name => 'keywords', :content => @meta_keywords}
+    =# sprockets_include_tag
+    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'print.css', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+  %body.bp
+    %header
+    %sidebar
+    %section= yield
+    %footer
