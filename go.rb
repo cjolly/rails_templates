@@ -25,7 +25,7 @@ GENERATORS
 generate "rspec:install"
 generate "cucumber:install --capybara --rspec"
 
-run "compass init --using blueprint --app rails --css-dir public/stylesheets"
+run "compass init rails --using=blueprint --sass-dir=app/stylesheets --css-dir=public/stylesheets"
 
 # git :init
 # git :add => '.'
