@@ -28,3 +28,12 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "haml-rails"
+gem "compass"
+gem "unicorn", :group => :development
+gem "capistrano", :group => :development
+gem "rspec", :group => :test
+gem "rspec-rails", :group => :test
+gem "factory_girl_rails", :group => :test
+gem "cucumber", :group => :test
+gem "cucumber-rails", :group => :test
