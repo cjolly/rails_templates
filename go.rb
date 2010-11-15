@@ -27,6 +27,11 @@ generate "cucumber:install --capybara --rspec"
 
 run "compass init rails --using=blueprint --sass-dir=app/stylesheets --css-dir=public/stylesheets"
 
+inside("app/views/layouts") do
+  run "rm application.html.erb"
+  get "https://github.com/cjolly/rails3_template/raw/master/assets/application.html.haml", "application.html.haml"
+end
+
 # git :init
 # git :add => '.'
 # git :commit => '-am "Initial commit"'
