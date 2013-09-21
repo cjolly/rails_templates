@@ -29,7 +29,6 @@ GENERATORS
 
 generate "rspec:install"
 
-run "rm public/index.html"
 inside("app/views/layouts") do
   run "rm application.html.erb"
   create_file "application.html.haml", <<-APPLICATION_STR
@@ -117,6 +116,29 @@ application(nil, env: "production") do
     }
   end)
 end
+
+run 'createuser --superuser rails'
+remove_file 'config/database.yml'
+create_file 'config/database.yml', <<-DB_TXT
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: #{app_name}_development
+  pool: 5
+  username: rails
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: #{app_name}_test
+  pool: 5
+  username: rails
+  password:
+
+DB_TXT
+
+rake 'db:create'
 
 append_file 'public/robots.txt', <<-ROBOTS_TXT
 
