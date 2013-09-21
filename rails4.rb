@@ -139,11 +139,13 @@ test:
 DB_TXT
 
 rake 'db:create'
+get 'https://gist.github.com/rwdaigle/2253296/raw/newrelic.yml', 'config/newrelic.yml'
 
 append_file 'public/robots.txt', <<-ROBOTS_TXT
 
 User-agent: *
 Allow: /
+
 ROBOTS_TXT
 
 git :init
