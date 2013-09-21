@@ -148,6 +148,8 @@ Allow: /
 
 ROBOTS_TXT
 
+route %(get '/__heartbeat__' => proc { |env| [200, {}, ["OK"]] })
+
 git :init
 
 say "#{app_const} Generated!"
