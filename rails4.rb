@@ -95,6 +95,18 @@ if Rails.env.test?
 end
 TIMEOUT_STR
 
+inject_into_file 'app/controllers/application_controller.rb', after: "  protect_from_forgery with: :exception\n" do <<-CONTROLLER_STR
+
+  # https://github.com/roidrage/lograge/issues/23
+  # http://apidock.com/rails/v3.2.8/ActionController/Instrumentation/append_info_to_payload
+  def append_info_to_payload(payload)
+    super
+    payload[:request_id] = request.env['HTTP_HEROKU_REQUEST_ID']
+  end
+
+CONTROLLER_STR
+end
+
 application(nil, env: "production") do
   %(  # https://github.com/roidrage/lograge
   config.lograge.enabled = true
